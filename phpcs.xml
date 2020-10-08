@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="PHP_CodeSniffer" xsi:noNamespaceSchemaLocation="phpcs.xsd">
+  <description>Coding standard for NVCore</description>
+  <release>1</release>
+
+  <!-- Source codes and tests directories (do not analyze css and javascript files) -->
+  <file>src</file>
+  <file>test</file>
+  <exclude-pattern>*/src/*\.(css|js)$</exclude-pattern>
+
+  <!-- Global config (arguments) -->
+  <arg name="extensions" value="php" />
+  <arg name="report" value="full" />
+  <arg value="spw" />
+
+  <!-- Rulesets (PEAR + PSR2) -->
+  <rule ref="PEAR">
+    <!-- Priority on PSR2 whitespace rules -->
+    <exclude name="PEAR.WhiteSpace.ScopeIndent" />
+    <!-- Priority on PSR2 switch declaration break indent -->
+    <exclude name="PEAR.ControlStructures.SwitchDeclaration.BreakIndent" />
+  </rule>
+  <rule ref="PSR2">
+    <!-- No line length limit -->
+    <exclude name="Generic.Files.LineLength.TooLong" />
+  </rule>
+
+  <!-- Tab width indent fix -->
+  <rule ref="Generic.WhiteSpace.ScopeIndent">
+    <properties>
+      <property name="indent" value="2" />
+    </properties>
+  </rule>
+  <rule ref="PSR2.ControlStructures.SwitchDeclaration">
+    <properties>
+      <property name="indent" value="2" />
+    </properties>
+  </rule>
+
+</ruleset>

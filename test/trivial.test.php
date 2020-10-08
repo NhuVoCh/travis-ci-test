@@ -37,7 +37,7 @@ final class TestTrivial extends TestCase
 {
   /**
    * Test equals assertions
-   * 
+   *
    * @test testEquals
    *
    * @return void
