@@ -16,3 +16,5 @@ stages:
     before_script:
       - curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar && chmod +x phpcs.phar && sudo mv phpcs.phar /usr/local/bin/phpcs
       - phpcs --version
+    script:
+      - phpcs

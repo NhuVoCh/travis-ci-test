@@ -1,0 +1,9 @@
+<phpunit
+    verbose="true"
+>
+  <testsuites>
+    <testsuite name="Test suite">
+      <directory>./test/*.test.php</directory>
+    </testsuite>
+  </testsuites>
+</phpunit>
