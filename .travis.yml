@@ -3,34 +3,33 @@ os:
   - linux
 dist: xenial
 
+php:
+  - 5.6
+  - 7.2
+  - 7.4
+
+stages:
+  - name: syntax
+  - name: test
+  - name: quality
+  - name: deploy
+    if: php = 7.4
 
 jobs:
   include:
     - stage: syntax
-      php:
-        - 5.6
-        - 7.2
-        - 7.4
       before_script:
         - php --version
       script:
         - find ./src ./test -name "*.php" -print 0 | xargs -0 -n1 php -l
+    - stage: test
+      before_script:
+        - phpunit --version
+      script:
+        - phpunit
     - stage: quality
-      php:
-        - 5.6
-        - 7.2
-        - 7.4
       before_script:
         - curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar && chmod +x phpcs.phar && sudo mv phpcs.phar /usr/local/bin/phpcs
         - phpcs --version
       script:
         - phpcs
-    - stage: test
-      php:
-        - 5.6
-        - 7.2
-        - 7.4
-      before_script:
-        - phpunit --version
-      script:
-        - phpunit
