@@ -2,9 +2,9 @@
 
 /**
  * Main call file
- * 
+ *
  * PHP Version 5.6, 7.2 and 7.4
- * 
+ *
  * @category  Test
  * @package   TravisCiTest
  * @author    Nhu-Hoai Robert Vo <nhuhoai.vo@nhuvo.ch>
@@ -14,5 +14,7 @@
  * @link      https://github.com/NhuVoCh/travis-ci-test
  * @since     0.1.0
  */
+
+namespace NhuVo\TravisCiTest;
 
 print "Hello world!";
