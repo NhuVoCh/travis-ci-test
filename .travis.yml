@@ -12,4 +12,4 @@ before_script:
   - phpunit --version
   - phpcs --version
 script:
-  
+  - find ./src ./test -name "*.php" -print 0 | xargs -0 -n1 php -l
