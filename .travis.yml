@@ -20,8 +20,17 @@ jobs:
       script:
         - find ./src ./test -name "*.php" -print 0 | xargs -0 -n1 php -l
     - <<: *job_syntax
+      name: Syntax PHP 7.0
+      php: 7.0
+    - <<: *job_syntax
+      name: Syntax PHP 7.1
+      php: 7.1
+    - <<: *job_syntax
       name: Syntax PHP 7.2
       php: 7.2
+    - <<: *job_syntax
+      name: Syntax PHP 7.3
+      php: 7.3
     - <<: *job_syntax
       name: Syntax PHP 7.4
       php: 7.4
@@ -35,8 +44,17 @@ jobs:
       script:
         - phpunit
     - <<: *job_test
+      name: Test PHP 7.0
+      php: 7.0
+    - <<: *job_test
+      name: Test PHP 7.1
+      php: 7.1
+    - <<: *job_test
       name: Test PHP 7.2
       php: 7.2
+    - <<: *job_test
+      name: Test PHP 7.3
+      php: 7.3
     - <<: *job_test
       name: Test PHP 7.4
       php: 7.4
@@ -51,8 +69,17 @@ jobs:
       script:
         - phpcs
     - <<: *job_quality
+      name: Quality PHP 7.0
+      php: 7.0
+    - <<: *job_quality
+      name: Quality PHP 7.1
+      php: 7.1
+    - <<: *job_quality
       name: Quality PHP 7.2
       php: 7.2
+    - <<: *job_quality
+      name: Quality PHP 7.3
+      php: 7.3
     - <<: *job_quality
       name: Quality PHP 7.4
       php: 7.4
