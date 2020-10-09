@@ -1,3 +1,5 @@
+# v0.2.0
+
 language: php
 os:
   - linux
@@ -11,6 +13,7 @@ stages:
 
 jobs:
   include:
+    # Syntax stage
     - &job_syntax
       stage: syntax
       name: Syntax PHP 5.6
@@ -35,6 +38,7 @@ jobs:
       name: Syntax PHP 7.4
       php: 7.4
 
+    # Test stage
     - &job_test
       stage: test
       name: Test PHP 5.6
@@ -62,6 +66,7 @@ jobs:
       name: Test PHP 7.4
       php: 7.4
 
+    # Quality stage
     - &job_quality
       stage: quality
       name: Quality PHP 5.6
