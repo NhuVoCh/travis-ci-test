@@ -9,56 +9,50 @@ stages:
   - name: quality
   - name: deploy
 
-job_syntax: &job_syntax
-  before_script:
-    - php --version
-  script:
-    - find ./src ./test -name "*.php" -print 0 | xargs -0 -n1 php -l
-
-job_test: &job_test
-  before_script:
-    - phpunit --version
-  script:
-    - phpunit
-
-job_quality: &job_quality
-  before_script:
-    - curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar && chmod +x phpcs.phar && sudo mv phpcs.phar /usr/local/bin/phpcs
-    - phpcs --version
-  script:
-    - phpcs
-
 jobs:
   include:
-    - stage: syntax
+    - &job_syntax
+      stage: syntax
       name: Syntax PHP 5.6
       php: 5.6
-      <<: *job_syntax
-    - name: Syntax PHP 7.2
+      before_script:
+        - php --version
+      script:
+        - find ./src ./test -name "*.php" -print 0 | xargs -0 -n1 php -l
+    - <<: *job_syntax
+      name: Syntax PHP 7.2
       php: 7.2
-      <<: *job_syntax
-    - name: Syntax PHP 7.4
+    - <<: *job_syntax
+      name: Syntax PHP 7.4
       php: 7.4
-      <<: *job_syntax
 
-    - stage: test
+    - &job_test
+      stage: test
       name: Test PHP 5.6
       php: 5.6
-      <<: *job_test
-    - name: Test PHP 7.2
+      before_script:
+        - phpunit --version
+      script:
+        - phpunit
+    - <<: *job_test
+      name: Test PHP 7.2
       php: 7.2
-      <<: *job_test
-    - name: Test PHP 7.4
+    - <<: *job_test
+      name: Test PHP 7.4
       php: 7.4
-      <<: *job_test
 
-    - stage: quality
+    - &job_quality
+      stage: quality
       name: Quality PHP 5.6
       php: 5.6
-      <<: *job_quality
-    - name: Quality PHP 7.2
+      before_script:
+        - curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar && chmod +x phpcs.phar && sudo mv phpcs.phar /usr/local/bin/phpcs
+        - phpcs --version
+      script:
+        - phpcs
+    - <<: *job_quality
+      name: Quality PHP 7.2
       php: 7.2
-      <<: *job_quality
-    - name: Quality PHP 7.4
+    - <<: *job_quality
+      name: Quality PHP 7.4
       php: 7.4
-      <<: *job_quality
