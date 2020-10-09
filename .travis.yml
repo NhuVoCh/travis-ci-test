@@ -41,20 +41,15 @@ jobs:
       php: 5.6
       before_script:
         - phpunit --version
+        - whereis phpunit
       script:
         - phpunit
     - <<: *job_test
       name: Test PHP 7.0
       php: 7.0
-      before_script:
-        - phpunit --version
-        - whereis phpunit
     - <<: *job_test
       name: Test PHP 7.1
       php: 7.1
-      before_script:
-        - phpunit --version
-        - whereis phpunit
     - <<: *job_test
       name: Test PHP 7.2
       php: 7.2
