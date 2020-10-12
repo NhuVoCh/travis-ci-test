@@ -20,10 +20,12 @@
     <!-- Priority on PSR2 switch declaration break indent -->
     <exclude name="PEAR.ControlStructures.SwitchDeclaration.BreakIndent" />
   </rule>
-  <rule ref="PSR2">
+  <rule ref="PSR12">
     <!-- No line length limit -->
     <exclude name="Generic.Files.LineLength.TooLong" />
   </rule>
+
+  <rule name="PSR12.Operators.OperatorSpacing"></rule>
 
   <!-- Tab width indent fix -->
   <rule ref="Generic.WhiteSpace.ScopeIndent">
